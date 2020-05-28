@@ -85,6 +85,7 @@ export const uniswapLoadState = () => async (dispatch, getState) => {
   }
 };
 
+// TODO MICHAL - Step #3 - network call to fetch global list from subgraph (getAllExchanges from handlers/uniswap.js) and load into redux as allPairs
 export const uniswapGetAllExchanges = () => async (dispatch, getState) => {
   const { tokenOverrides } = getState().data;
   const { network } = getState().settings;
@@ -107,6 +108,7 @@ export const uniswapGetAllExchanges = () => async (dispatch, getState) => {
   }
 };
 
+// TODO MICHAL - Step #2 - Loads the curated list into redux as pairs
 export const uniswapPairsInit = () => (dispatch, getState) => {
   const { network } = getState().settings;
   const pairs =

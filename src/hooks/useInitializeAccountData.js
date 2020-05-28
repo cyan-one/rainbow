@@ -18,6 +18,7 @@ export default function useInitializeAccountData() {
         dispatch(explorerInit());
       });
 
+      // TODO MICHAL - Step #1 - init redux/uniswap.js
       InteractionManager.runAfterInteractions(async () => {
         dispatch(uniswapPairsInit());
         await dispatch(uniswapGetAllExchanges());

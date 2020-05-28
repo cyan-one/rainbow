@@ -44,6 +44,7 @@ export const UNISWAP_24HOUR_PRICE_QUERY = gql`
   }
 `;
 
+// TODO MICHAL - Step #4 - the query to get all exchanges. Get basic info about the pool + ETH balance.
 export const UNISWAP_ALL_EXCHANGES_QUERY = gql`
   query exchanges($excluded: [String]!, $first: Int!, $skip: Int!) {
     exchanges(

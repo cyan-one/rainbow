@@ -50,6 +50,7 @@ export const exchangeModalBorderRadius = 30;
 
 const AnimatedFloatingPanels = Animated.createAnimatedComponent(FloatingPanels);
 
+// TODO MICHAL - Step A
 const ExchangeModal = ({
   createRap,
   cTokenBalance,
@@ -82,14 +83,18 @@ const ExchangeModal = ({
     updateDefaultGasLimit,
     updateTxFee,
   } = useGas();
+
+  // TODO MICHAL - Step B - listen to the input and output reserve from useUniswapCurrencyReserves.js
   const {
     clearUniswapCurrenciesAndReserves,
     inputReserve,
     outputReserve,
   } = useUniswapCurrencyReserves();
+  // TODO MICHAL - Step C - function for listening to block updates to the reserves
   const { initWeb3Listener, stopWeb3Listener } = useBlockPolling();
   const { nativeCurrency } = useAccountSettings();
   const prevSelectedGasPrice = usePrevious(selectedGasPrice);
+  // TODO MICHAL - Step D - function for market details - where the magic happens!
   const { getMarketDetails } = useUniswapMarketDetails();
   const { maxInputBalance, updateMaxInputBalance } = useMaxInputBalance();
 

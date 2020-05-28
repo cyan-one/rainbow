@@ -63,6 +63,7 @@ export const findSwapOutputAmount = (receipt, accountAddress) => {
   return convertHexToString(data);
 };
 
+// TODO MICHAL - Step I - execute the swap rap
 const swap = async (wallet, currentRap, index, parameters) => {
   logger.log('[swap] swap on uniswap!');
   const {

@@ -22,6 +22,7 @@ export default function useUniswapMarketDetails() {
 
   const { inputReserve, outputReserve } = useUniswapCurrencyReserves();
 
+  // TODO MICHAL - Step G
   const updateTradeDetails = useCallback(
     ({
       inputAmount,
@@ -152,6 +153,7 @@ export default function useUniswapMarketDetails() {
     [getMarketPrice]
   );
 
+  // TODO MICHAL - Step E
   const getMarketDetails = useCallback(
     ({
       inputAmount,
@@ -176,6 +178,7 @@ export default function useUniswapMarketDetails() {
       if (isMissingCurrency || isMissingReserves) return;
 
       try {
+        // TODO MICHAL - Step F
         const tradeDetails = updateTradeDetails({
           inputAmount,
           inputAsExactAmount,

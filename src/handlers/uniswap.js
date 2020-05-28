@@ -166,6 +166,7 @@ const getContractExecutionDetails = (tradeDetails, providerOrSigner) => {
   };
 };
 
+// TODO MICHAL - Step J - execute the swap
 export const executeSwap = async (
   tradeDetails,
   gasLimit,
@@ -393,6 +394,7 @@ export const getChart = async (exchangeAddress, timeframe) => {
   return data;
 };
 
+// TODO MICHAL - Step #4 - hit the Uniswap subgraph UNISWAP_ALL_EXCHANGES_QUERY in queries.js
 export const getAllExchanges = async (tokenOverrides, excluded = []) => {
   const pageSize = 600;
   let allTokens = {};
@@ -436,6 +438,7 @@ export const getAllExchanges = async (tokenOverrides, excluded = []) => {
   return allTokens;
 };
 
+// TODO MICHAL - Step H
 export const calculateTradeDetails = (
   chainId,
   inputAmount,
