@@ -4,7 +4,10 @@ import Routes from '../../../screens/Routes/routesNames';
 import { colors } from '../../../styles';
 import SheetActionButton from './SheetActionButton';
 
-export default function SendActionButton(props) {
+export default function SendActionButton({
+  color = colors.paleBlue,
+  ...props
+}) {
   const navigate = useExpandedStateNavigation();
   const handlePress = useCallback(() => navigate(Routes.SEND_SHEET), [
     navigate,
@@ -13,7 +16,7 @@ export default function SendActionButton(props) {
   return (
     <SheetActionButton
       {...props}
-      color={colors.paleBlue}
+      color={color}
       label="􀈠 Send"
       onPress={handlePress}
     />
