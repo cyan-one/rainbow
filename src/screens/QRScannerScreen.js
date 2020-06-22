@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { View } from 'react-native';
 import { useIsEmulator } from 'react-native-device-info';
+import Animated from 'react-native-reanimated';
 import { useSafeArea } from 'react-native-safe-area-context';
+import styled from 'styled-components/native';
 import { BubbleSheet } from '../components/bubble-sheet';
 import { Button } from '../components/buttons';
 import { DiscoverSheet } from '../components/discover-sheet';
@@ -15,8 +17,29 @@ import {
   WalletConnectList,
 } from '../components/walletconnect-list';
 import { discoverSheetAvailable } from '../config/experimental';
+import { scrollPosition } from '../navigation/helpers';
 import { colors, position } from '../styles';
 import { isNewValueForObjectPaths } from '../utils';
+
+const DimmedView = styled(Animated.View)`
+  flex: 1
+  width: 100%
+`;
+
+const Backgroud = styled.View`
+  position: absolute
+  background-color: black;
+  width: 100%;
+  height: 100%;
+`;
+
+const Dim = ({ children }) => (
+  <DimmedView
+    style={{ opacity: Animated.min(Animated.sub(scrollPosition, 1), 0.9) }}
+  >
+    {children}
+  </DimmedView>
+);
 
 const QRScannerScreen = ({
   enableScanning,
@@ -43,17 +66,20 @@ const QRScannerScreen = ({
         direction="column"
         overflow="hidden"
       >
-        <QRCodeScanner
-          {...props}
-          contentPositionBottom={sheetHeight}
-          contentPositionTop={HeaderHeight}
-          enableCamera={isFocused}
-          enableScanning={enableScanning}
-          isCameraAuthorized={isCameraAuthorized}
-          isEmulator={isEmulator}
-          onSuccess={onScanSuccess}
-          showCrosshairText={!!walletConnectorsCount}
-        />
+        <Backgroud />
+        <Dim>
+          <QRCodeScanner
+            {...props}
+            contentPositionBottom={sheetHeight}
+            contentPositionTop={HeaderHeight}
+            enableCamera={isFocused}
+            enableScanning={enableScanning}
+            isCameraAuthorized={isCameraAuthorized}
+            isEmulator={isEmulator}
+            onSuccess={onScanSuccess}
+            showCrosshairText={!!walletConnectorsCount}
+          />
+        </Dim>
         {discoverSheetAvailable ? null : (
           <BubbleSheet bottom={insets.bottom ? 21 : 0} onLayout={onSheetLayout}>
             {walletConnectorsCount ? (

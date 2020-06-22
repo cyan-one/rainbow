@@ -21,6 +21,8 @@ export function createStackNavigator(routes, config = {}) {
   });
 }
 
+export const scrollPosition = new Value(1);
+
 export function ScrollPagerWrapper(props) {
   return Platform.select({
     android: <ViewPagerAdapter {...props} />,

@@ -4,7 +4,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import QRScannerScreenWithData from '../screens/QRScannerScreenWithData';
 import WalletScreen from '../screens/WalletScreen';
 import { deviceUtils } from '../utils';
-import { ScrollPagerWrapper } from './helpers';
+import { ScrollPagerWrapper, scrollPosition } from './helpers';
 import Routes from './routesNames';
 const Swipe = createMaterialTopTabNavigator();
 
@@ -13,6 +13,7 @@ const renderTabBar = () => null;
 export function SwipeNavigator() {
   return (
     <Swipe.Navigator
+      position={scrollPosition}
       initialRouteName={Routes.WALLET_SCREEN}
       tabBar={renderTabBar}
       initialLayout={deviceUtils.dimensions}
